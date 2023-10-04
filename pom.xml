@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20190722</version>
+            <version>20230227</version>
         </dependency>
         <dependency>
             <groupId>gov.nasa.gsfc.heasarc</groupId>
@@ -62,7 +62,7 @@
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
-            <version>5.5.12</version>
+            <version>5.5.13.3</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
