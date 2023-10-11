@@ -15,4 +15,8 @@ resource "aws_ecs_task_definition" "service" {
       ]
     }
   ])
+  tags = {
+    git_org   = "stoikiy-muzhik"
+    yor_trace = "61af7b08-891c-4575-95ea-7449b23f98c6"
+  }
 }
