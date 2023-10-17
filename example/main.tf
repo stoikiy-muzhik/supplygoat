@@ -8,5 +8,9 @@ resource "aws_security_group" "example" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  tags = {
+    git_org   = "stoikiy-muzhik"
+    yor_trace = "8b03ef03-c74b-4165-8eb1-e991817ad337"
+  }
 }
 
