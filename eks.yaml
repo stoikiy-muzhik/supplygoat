@@ -56,6 +56,11 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
         - arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+      Tags:
+        - Key: yor_trace
+          Value: d46a190a-216b-4afc-9666-c7674bdc9e8e
+        - Key: git_org
+          Value: stoikiy-muzhik
   VPC:
     Type: AWS::EC2::VPC
     Properties:
@@ -65,12 +70,20 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-VPC'
+        - Key: yor_trace
+          Value: 7ef8329f-6059-49c4-80bc-c957943d2dcd
+        - Key: git_org
+          Value: stoikiy-muzhik
   InternetGateway:
     Type: "AWS::EC2::InternetGateway"
     Properties:
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-Internet Gateway'
+        - Key: yor_trace
+          Value: 282b1c16-1f90-4b9a-85b9-7f1600a15f9b
+        - Key: git_org
+          Value: stoikiy-muzhik
   VPCGatewayAttachment:
     Type: "AWS::EC2::VPCGatewayAttachment"
     Properties:
@@ -85,6 +98,10 @@ Resources:
           Value: Public Subnets
         - Key: Network
           Value: Public
+        - Key: yor_trace
+          Value: dfbb8cff-9490-4375-8c9c-1c290df8222f
+        - Key: git_org
+          Value: stoikiy-muzhik
   PrivateRouteTable01:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -94,6 +111,10 @@ Resources:
           Value: Private Subnet AZ1
         - Key: Network
           Value: Private01
+        - Key: yor_trace
+          Value: bc7ee006-f721-404b-a0a8-917589db281e
+        - Key: git_org
+          Value: stoikiy-muzhik
   PrivateRouteTable02:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -103,6 +124,10 @@ Resources:
           Value: Private Subnet AZ2
         - Key: Network
           Value: Private02
+        - Key: yor_trace
+          Value: 1cc50275-4294-4918-b5cb-936e911ba171
+        - Key: git_org
+          Value: stoikiy-muzhik
   PublicRoute:
     DependsOn:
     - VPCGatewayAttachment
@@ -141,6 +166,10 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-NatGatewayAZ1'
+        - Key: git_org
+          Value: stoikiy-muzhik
+        - Key: yor_trace
+          Value: e9b97c4c-1cbb-47bb-be10-d59c6c649c73
   NatGateway02:
     DependsOn:
     - NatGatewayEIP2
@@ -153,18 +182,32 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-NatGatewayAZ2'
+        - Key: yor_trace
+          Value: f5b876a6-a7f8-4d39-9014-5d37a1ce1a30
+        - Key: git_org
+          Value: stoikiy-muzhik
   NatGatewayEIP1:
     DependsOn:
     - VPCGatewayAttachment
     Type: 'AWS::EC2::EIP'
     Properties:
       Domain: vpc
+      Tags:
+        - Key: git_org
+          Value: stoikiy-muzhik
+        - Key: yor_trace
+          Value: f7cf9c4d-5db0-42ab-9f08-f711a4077be3
   NatGatewayEIP2:
     DependsOn:
     - VPCGatewayAttachment
     Type: 'AWS::EC2::EIP'
     Properties:
       Domain: vpc
+      Tags:
+        - Key: yor_trace
+          Value: 1de02457-48c0-4923-aed1-900f9ee38d2f
+        - Key: git_org
+          Value: stoikiy-muzhik
   PublicSubnet01:
     Type: AWS::EC2::Subnet
     Metadata:
@@ -182,6 +225,10 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${AWS::StackName}-PublicSubnet01"
+        - Key: yor_trace
+          Value: da99cd96-0b1c-461f-bafc-880b88581d27
+        - Key: git_org
+          Value: stoikiy-muzhik
   PublicSubnet02:
     Type: AWS::EC2::Subnet
     Metadata:
@@ -199,6 +246,10 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${AWS::StackName}-PublicSubnet02"
+        - Key: yor_trace
+          Value: 7c14667b-6556-4df1-81d5-747ff9ac1eab
+        - Key: git_org
+          Value: stoikiy-muzhik
   PrivateSubnet01:
     Type: AWS::EC2::Subnet
     Metadata:
@@ -218,6 +269,10 @@ Resources:
           Value: !Sub "${AWS::StackName}-PrivateSubnet01"
         - Key: "kubernetes.io/role/internal-elb"
           Value: "1"
+        - Key: yor_trace
+          Value: 2e0905fc-3391-4024-a04f-61fa80fcc962
+        - Key: git_org
+          Value: stoikiy-muzhik
   PrivateSubnet02:
     Type: AWS::EC2::Subnet
     Metadata:
@@ -237,6 +292,10 @@ Resources:
           Value: !Sub "${AWS::StackName}-PrivateSubnet02"
         - Key: "kubernetes.io/role/internal-elb"
           Value: "1"
+        - Key: yor_trace
+          Value: 07493d5f-23d1-4e46-86a5-f5099ecdd413
+        - Key: git_org
+          Value: stoikiy-muzhik
   PublicSubnet01RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
@@ -262,6 +321,11 @@ Resources:
     Properties:
       GroupDescription: Cluster communication with worker nodes
       VpcId: !Ref VPC
+      Tags:
+        - Key: yor_trace
+          Value: ac7740d0-bccd-4321-a1ba-69ee5c35c12b
+        - Key: git_org
+          Value: stoikiy-muzhik
   EKSCluster:
     Type: AWS::EKS::Cluster
     Properties:
